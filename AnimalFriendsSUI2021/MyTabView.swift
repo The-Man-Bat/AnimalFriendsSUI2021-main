@@ -12,19 +12,19 @@ struct MyTabView: View {
         TabView {
             Introduction()
                 .tabItem {
-                    Label("Introduction", systemImage: "list.dash")
+                    Label("Introduction", systemImage: "info.circle")
                 }
             Diagnosis()
                 .tabItem {
-                    Label("Diagnosis", systemImage: "square.and.pencil")
+                    Label("Diagnosis", systemImage: "cross")
                 }
             Treatments()
                 .tabItem {
-                    Label("Treatments", systemImage: "trash")
+                    Label("Treatments", systemImage: "pills")
                 }
             CallAI()
                 .tabItem {
-                    Label("Treatments", systemImage: "trash")
+                    Label("Try My AI", systemImage: "waveform.path.ecg")
                 }
         }
     }
@@ -34,4 +34,15 @@ struct MyTabView_Previews: PreviewProvider {
     static var previews: some View {
         MyTabView()
     }
+}
+
+extension String {
+  func toMarkdown() -> AttributedString {
+    do {
+      return try AttributedString(markdown: self)
+    } catch {
+      print("Error parsing Markdown for string \(self): \(error)")
+      return AttributedString(self)
+    }
+  }
 }
